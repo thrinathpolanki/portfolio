@@ -10,6 +10,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="Logo.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Founder and Owner of Trimitha",
+      "description": "A technology-driven company built on Trust, Thought, and Technology with togetherness",
+      "url": "https://trimitha.co.in",
+      "sameAs": [
+        "https://www.linkedin.com/thrinathpolanki",
+        "https://www.linkedin.com/trimitha.co.in",
+        "https://www.instagram.com/trimitha.co",
+        "https://www.instagram.com/thrinath.polanki/",
+        "https://twitter.com/thrinath_bfe",
+        "https://twitter.com/trimithacompany"
+      ],
+      "applicationCategory": "HealthApplication",
+      "genre": "Medical Information",
+      "offeredBy": {
+        "@type": "Organization",
+        "name": "Trimitha",
+        "url": "https://trimitha.co.in"
+      },
+      "operatingSystem": "All"
+    }
+    </script>
     
     <!-- Icons: Phosphor Icons (Lightweight & Modern) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -563,7 +590,7 @@
     <!-- Footer -->
     <footer class="py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2026 Polanki Thrinath. All rights reserved.</p>
+            <p>© 2024 Polanki Thrinath. All rights reserved.</p>
             <div class="flex gap-6">
                 <a href="https://github.com/thrinathpolanki" class="hover:text-emerald-400 transition-colors"><i class="ph ph-github-logo text-xl"></i></a>
                 <a href="https://linkedin.com/in/thrinathpolanki" class="hover:text-emerald-400 transition-colors"><i class="ph ph-linkedin-logo text-xl"></i></a>
@@ -730,30 +757,19 @@
             telegramForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // ⚠️ IMPORTANT: Replace these with your actual details
-                // 1. Search "BotFather" in Telegram, create a bot, get the token.
-                // 2. Search "userinfobot" in Telegram, start it, get your ID.
-                const botToken = '8129120213:AAF2dNi7EdZwuIshlsZ4O7nz05YXQvZ0yt0'; 
-                const chatId = '1483508385';
+                // ⚠️ IMPORTANT: Paste your Google Apps Script Web App URL here
+                const webAppUrl = "https://script.google.com/macros/s/AKfycbwzw76dBQTyAQrTrs_hQOIv6jetOnt-8TbLhPg5f4EbhFfceMiLu1G8KFQfEuCMepzIjw/exec"; 
 
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const message = document.getElementById('message').value;
                 const submitBtn = document.getElementById('submitBtn');
 
-                if (botToken === 'YOUR_BOT_TOKEN_HERE' || chatId === 'YOUR_CHAT_ID_HERE') {
-                    alert('⚠️ CONFIGURATION MISSING!\n\nPlease open the index.html file code and replace "YOUR_BOT_TOKEN_HERE" and "YOUR_CHAT_ID_HERE" with your actual Telegram details at the bottom of the script.');
+                // NEW VALIDATION CHECK
+                if (webAppUrl === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL" || webAppUrl.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
+                    alert('⚠️ CONFIGURATION MISSING!\n\nPlease open the index.html file code and replace "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL" with the actual URL you got from deploying your Google Apps Script.');
                     return;
                 }
-
-                const text = `
-📩 *New Portfolio Contact*
-
-👤 *Name:* ${name}
-📧 *Email:* ${email}
-📝 *Message:*
-${message}
-                `;
 
                 // Visual feedback
                 const originalBtnText = submitBtn.innerHTML;
@@ -762,25 +778,27 @@ ${message}
                 submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
                 try {
-                    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    // Send data to Google Apps Script
+                    // We use 'no-cors' mode to bypass CORS restrictions. 
+                    // The request will be sent, but we cannot read the response.
+                    
+                    await fetch(webAppUrl, {
                         method: 'POST',
+                        mode: 'no-cors', 
                         headers: {
-                            'Content-Type': 'application/json',
+                            'Content-Type': 'text/plain',
                         },
                         body: JSON.stringify({
-                            chat_id: chatId,
-                            text: text,
-                            parse_mode: 'Markdown'
+                            name: name,
+                            email: email,
+                            message: message
                         })
                     });
+                    
+                    // With 'no-cors', if the promise resolves, the request was sent.
+                    openSuccessModal();
+                    telegramForm.reset();
 
-                    if (response.ok) {
-                        // REPLACED ALERT WITH CUSTOM MODAL
-                        openSuccessModal();
-                        telegramForm.reset();
-                    } else {
-                        throw new Error('Failed to send message');
-                    }
                 } catch (error) {
                     console.error('Error:', error);
                     alert('Failed to send message. Please check your internet connection or try emailing me directly.');
