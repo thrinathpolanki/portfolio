@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Polanki Thrinath | AI & ML Engineer</title>
     <meta name="description" content="Portfolio of Polanki Thrinath - Computer Science Engineer specializing in AI/ML and Web Development.">
     
@@ -10,33 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="Logo.png" />
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Founder and Owner of Trimitha",
-      "description": "A technology-driven company built on Trust, Thought, and Technology with togetherness",
-      "url": "https://trimitha.co.in",
-      "sameAs": [
-        "https://www.linkedin.com/thrinathpolanki",
-        "https://www.linkedin.com/trimitha.co.in",
-        "https://www.instagram.com/trimitha.co",
-        "https://www.instagram.com/thrinath.polanki/",
-        "https://twitter.com/thrinath_bfe",
-        "https://twitter.com/trimithacompany"
-      ],
-      "applicationCategory": "HealthApplication",
-      "genre": "Medical Information",
-      "offeredBy": {
-        "@type": "Organization",
-        "name": "Trimitha",
-        "url": "https://trimitha.co.in"
-      },
-      "operatingSystem": "All"
-    }
-    </script>
     
     <!-- Icons: Phosphor Icons (Lightweight & Modern) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -46,6 +19,34 @@
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Trimitha",
+      "description": "A technology-driven company built on Trust, Thought, and Technology with togetherness",
+      "url": "https://trimitha.co.in",
+      "image": "https://trimitha.co.in/Images/TrimithaLogo.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/trimitha",
+        "https://www.instagram.com/trimitha.co/",
+        "https://twitter.com/trimithacompany"
+      ],
+      "knowsAbout": ["Web Development", "Entrepreneurship", "UX Design", "Digital Strategy"],
+      "founder": {
+        "@type": "Person",
+        "name": "Thrinath Polanki",
+        "url": "https://www.linkedin.com/in/thrinathpolanki",
+        "sameAs": [
+          "https://www.linkedin.com/in/thrinathpolanki",
+          "https://twitter.com/thrinath_bfe",
+          "https://www.instagram.com/thrinath.polanki"
+        ]
+      }
+    }
+    </script>
 
     <!-- Configuration -->
     <script>
@@ -108,13 +109,15 @@
             50% { opacity: 0; }
         }
 
-        /* Card Hover Glow */
-        .project-card:hover {
-            box-shadow: 0 0 25px rgba(52, 211, 153, 0.15);
-            transform: translateY(-5px);
+        /* Card Hover Glow - optimized for desktop, subtle on mobile */
+        @media (hover: hover) {
+            .project-card:hover {
+                box-shadow: 0 0 25px rgba(52, 211, 153, 0.15);
+                transform: translateY(-5px);
+            }
         }
         
-        /* Custom Scrollbar */
+        /* Custom Scrollbar - Hidden on mobile for cleaner look */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -134,14 +137,14 @@
 
     <!-- Background Elements -->
     <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-emerald-500/10 rounded-full blur-[80px] md:blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-indigo-500/10 rounded-full blur-[80px] md:blur-[100px]"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-2xl font-bold font-mono tracking-tighter hover:text-emerald-400 transition-colors">
+        <div class="max-w-6xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+            <a href="#" class="text-xl md:text-2xl font-bold font-mono tracking-tighter hover:text-emerald-400 transition-colors z-50 relative">
                 &lt;Thrinath Polanki&gt;
             </a>
 
@@ -155,21 +158,18 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-300 hover:text-white">
-                <i class="ph ph-list"></i>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-300 hover:text-white z-50 relative p-2 focus:outline-none">
+                <i class="ph ph-list" id="menu-icon"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-slate-900/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8 md:hidden">
-            <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-slate-400">
-                <i class="ph ph-x"></i>
-            </button>
-            <a href="#about" class="text-xl font-medium text-slate-200 mobile-link">About</a>
-            <a href="#skills" class="text-xl font-medium text-slate-200 mobile-link">Skills</a>
-            <a href="#projects" class="text-xl font-medium text-slate-200 mobile-link">Projects</a>
-            <a href="#achievements" class="text-xl font-medium text-slate-200 mobile-link">Credentials</a>
-            <a href="#contact" class="text-xl font-medium text-emerald-400 mobile-link">Contact Me</a>
+        <div id="mobile-menu" class="fixed inset-0 bg-slate-900/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8 md:hidden h-screen w-screen">
+            <a href="#about" class="text-2xl font-medium text-slate-200 mobile-link hover:text-emerald-400 transition-colors">About</a>
+            <a href="#skills" class="text-2xl font-medium text-slate-200 mobile-link hover:text-emerald-400 transition-colors">Skills</a>
+            <a href="#projects" class="text-2xl font-medium text-slate-200 mobile-link hover:text-emerald-400 transition-colors">Projects</a>
+            <a href="#achievements" class="text-2xl font-medium text-slate-200 mobile-link hover:text-emerald-400 transition-colors">Credentials</a>
+            <a href="#contact" class="text-2xl font-medium text-emerald-400 mobile-link">Contact Me</a>
         </div>
     </nav>
 
@@ -184,24 +184,24 @@
                 Available for Internship Opportunities
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
                 Building Intelligent <br>
                 <span class="text-gradient">Web Solutions</span>
             </h1>
             
-            <p class="text-xl text-slate-400 mb-8 h-8 font-mono">
+            <p class="text-lg md:text-xl text-slate-400 mb-8 h-8 font-mono">
                 I am <span id="typewriter" class="text-slate-100"></span><span class="cursor-blink text-emerald-400">|</span>
             </p>
 
-            <p class="text-slate-400 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
+            <p class="text-slate-400 max-w-2xl mx-auto mb-10 text-base md:text-lg leading-relaxed px-4">
                 Computer Science Engineer (AI & ML) passionate about bridging the gap between complex algorithms and user-friendly web interfaces.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 bg-emerald-500 text-slate-900 font-bold rounded-lg hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 bg-emerald-500 text-slate-900 font-bold rounded-lg hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] text-center">
                     View My Work
                 </a>
-                <a href="https://github.com/thrinathpolanki" target="_blank" class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 text-slate-200 font-medium rounded-lg border border-slate-700 hover:bg-slate-700 transition-all flex items-center justify-center gap-2">
+                <a href="https://github.com/thrinathpolanki" target="_blank" class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 text-slate-200 font-medium rounded-lg border border-slate-700 hover:bg-slate-700 transition-all flex items-center justify-center gap-2 text-center">
                     <i class="ph ph-github-logo text-xl"></i> GitHub
                 </a>
             </div>
@@ -209,36 +209,36 @@
     </header>
 
     <!-- About & Education Section -->
-    <section id="about" class="py-24 px-6 bg-slate-850/50">
+    <section id="about" class="py-16 md:py-24 px-6 bg-slate-850/50">
         <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
                 
                 <!-- Bio -->
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
                         <i class="ph ph-user text-emerald-400"></i> About Me
                     </h2>
-                    <p class="text-slate-400 leading-relaxed mb-6">
+                    <p class="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
                         I am currently pursuing a <strong>B.Tech in Computer Science & Engineering (AI & ML)</strong> at Vasireddy Venkatadri Institute of Technology.
                     </p>
-                    <p class="text-slate-400 leading-relaxed mb-6">
+                    <p class="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
                         My journey is driven by a curiosity to explore emerging technologies. I specialize in <strong>Python</strong> and <strong>Web Development</strong>, with a knack for solving real-world problems through code. Whether it's building an AI-powered prescription reader or a fully responsive corporate website, I focus on clean code and user impact.
                     </p>
                     <div class="flex gap-4 mt-8">
                         <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 w-1/2 text-center">
-                            <div class="text-3xl font-bold text-emerald-400 mb-1">8.1</div>
-                            <div class="text-xs text-slate-500 uppercase tracking-wider">Current CGPA</div>
+                            <div class="text-2xl md:text-3xl font-bold text-emerald-400 mb-1">8.1</div>
+                            <div class="text-[10px] md:text-xs text-slate-500 uppercase tracking-wider">Current CGPA</div>
                         </div>
                         <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 w-1/2 text-center">
-                            <div class="text-3xl font-bold text-emerald-400 mb-1">5+</div>
-                            <div class="text-xs text-slate-500 uppercase tracking-wider">Certifications</div>
+                            <div class="text-2xl md:text-3xl font-bold text-emerald-400 mb-1">5+</div>
+                            <div class="text-[10px] md:text-xs text-slate-500 uppercase tracking-wider">Certifications</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Education Timeline -->
                 <div data-aos="fade-left">
-                    <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
                         <i class="ph ph-graduation-cap text-emerald-400"></i> Education
                     </h2>
                     
@@ -246,26 +246,26 @@
                         <!-- Degree -->
                         <div class="relative">
                             <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-emerald-500"></span>
-                            <h3 class="text-xl font-bold text-slate-100">B.Tech - CSE (AI & ML)</h3>
+                            <h3 class="text-lg md:text-xl font-bold text-slate-100">B.Tech - CSE (AI & ML)</h3>
                             <p class="text-emerald-400 font-mono text-sm mb-1">2024 - Present</p>
-                            <p class="text-slate-400">Vasireddy Venkatadri Institute of Technology</p>
+                            <p class="text-slate-400 text-sm md:text-base">Vasireddy Venkatadri Institute of Technology</p>
                         </div>
                         
                         <!-- Intermediate -->
                         <div class="relative">
                             <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
-                            <h3 class="text-xl font-bold text-slate-100">Intermediate Education</h3>
+                            <h3 class="text-lg md:text-xl font-bold text-slate-100">Intermediate Education</h3>
                             <p class="text-slate-500 font-mono text-sm mb-1">2022 - 2024</p>
-                            <p class="text-slate-400">Deepthi Junior College</p>
+                            <p class="text-slate-400 text-sm md:text-base">Deepthi Junior College</p>
                             <p class="text-sm text-slate-500 mt-1">Score: 95.4%</p>
                         </div>
 
                         <!-- School -->
                         <div class="relative">
                             <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
-                            <h3 class="text-xl font-bold text-slate-100">Secondary School</h3>
+                            <h3 class="text-lg md:text-xl font-bold text-slate-100">Secondary School</h3>
                             <p class="text-slate-500 font-mono text-sm mb-1">2021 - 2022</p>
-                            <p class="text-slate-400">Sri Chakra High School</p>
+                            <p class="text-slate-400 text-sm md:text-base">Sri Chakra High School</p>
                             <p class="text-sm text-slate-500 mt-1">Score: 89%</p>
                         </div>
                     </div>
@@ -275,14 +275,14 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6 relative">
+    <section id="skills" class="py-16 md:py-24 px-6 relative">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Arsenal</h2>
-                <p class="text-slate-400">Tools and technologies I use to bring ideas to life</p>
+            <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl md:text-4xl font-bold mb-4">Technical Arsenal</h2>
+                <p class="text-slate-400 text-sm md:text-base">Tools and technologies I use to bring ideas to life</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Languages -->
                 <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50 hover:border-emerald-500/30 transition-all" data-aos="zoom-in" data-aos-delay="100">
                     <div class="h-12 w-12 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-400 text-2xl mb-4">
@@ -330,19 +330,19 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 px-6 bg-slate-850/50">
+    <section id="projects" class="py-16 md:py-24 px-6 bg-slate-850/50">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-2">Featured Projects</h2>
-                    <p class="text-slate-400">Real-world applications delivering impact.</p>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16" data-aos="fade-up">
+                <div class="text-center md:text-left w-full md:w-auto">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-2">Featured Projects</h2>
+                    <p class="text-slate-400 text-sm md:text-base">Real-world applications delivering impact.</p>
                 </div>
                 <a href="https://github.com/thrinathpolanki" target="_blank" class="hidden md:flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors mt-4 md:mt-0">
                     View GitHub <i class="ph ph-arrow-right"></i>
                 </a>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                 
                 <!-- Project 1: Rxplain -->
                 <article class="project-card bg-slate-800 rounded-xl overflow-hidden border border-slate-700 transition-all duration-300 flex flex-col h-full" data-aos="fade-up">
@@ -351,9 +351,9 @@
                         <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#60A5FA 1px, transparent 1px); background-size: 20px 20px;"></div>
                         <i class="ph ph-first-aid text-6xl text-blue-400 z-10 group-hover:scale-110 transition-transform duration-500"></i>
                     </div>
-                    <div class="p-8 flex-1 flex flex-col">
+                    <div class="p-6 md:p-8 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-bold text-slate-100">Rxplain</h3>
+                            <h3 class="text-xl md:text-2xl font-bold text-slate-100">Rxplain</h3>
                             <span class="px-2 py-1 text-xs font-mono bg-blue-500/10 text-blue-400 rounded">AI Healthcare</span>
                         </div>
                         <p class="text-slate-400 mb-6 text-sm leading-relaxed">
@@ -368,10 +368,10 @@
                                 <span class="text-xs font-mono text-slate-500 border border-slate-700 px-2 py-1 rounded">Firebase</span>
                             </div>
                             <div class="flex gap-4">
-                                <a href="https://rxplain.vercel.app" target="_blank" class="flex-1 flex items-center justify-center py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors">
+                                <a href="https://rxplain.vercel.app" target="_blank" class="flex-1 flex items-center justify-center py-3 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors">
                                     Visit Site
                                 </a>
-                                <a href="https://github.com/thrinathpolanki/Rxplain" class="px-3 py-2 text-slate-400 hover:text-white transition-colors border border-slate-700 rounded-lg">
+                                <a href="https://github.com/thrinathpolanki/Rxplain" class="px-4 py-3 text-slate-400 hover:text-white transition-colors border border-slate-700 rounded-lg flex items-center justify-center">
                                     <i class="ph ph-github-logo text-lg"></i>
                                 </a>
                             </div>
@@ -385,9 +385,9 @@
                         <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(45deg, #10B981 25%, transparent 25%, transparent 50%, #10B981 50%, #10B981 75%, transparent 75%, transparent); background-size: 20px 20px;"></div>
                         <i class="ph ph-buildings text-6xl text-emerald-400 z-10 group-hover:scale-110 transition-transform duration-500"></i>
                     </div>
-                    <div class="p-8 flex-1 flex flex-col">
+                    <div class="p-6 md:p-8 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-bold text-slate-100">Trimitha</h3>
+                            <h3 class="text-xl md:text-2xl font-bold text-slate-100">Trimitha</h3>
                             <span class="px-2 py-1 text-xs font-mono bg-emerald-500/10 text-emerald-400 rounded">Corporate Web Application</span>
                         </div>
                         <p class="text-slate-400 mb-6 text-sm leading-relaxed">
@@ -401,10 +401,10 @@
                                 <span class="text-xs font-mono text-slate-500 border border-slate-700 px-2 py-1 rounded">SEO</span>
                             </div>
                             <div class="flex gap-4">
-                                <a href="https://trimitha.co.in" target="_blank" class="flex-1 flex items-center justify-center py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded-lg transition-colors">
+                                <a href="https://trimitha.co.in" target="_blank" class="flex-1 flex items-center justify-center py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded-lg transition-colors">
                                     Visit Site
                                 </a>
-                                <a href="https://github.com/thrinathpolanki/trimitha" class="px-3 py-2 text-slate-400 hover:text-white transition-colors border border-slate-700 rounded-lg">
+                                <a href="https://github.com/thrinathpolanki/trimitha" class="px-4 py-3 text-slate-400 hover:text-white transition-colors border border-slate-700 rounded-lg flex items-center justify-center">
                                     <i class="ph ph-github-logo text-lg"></i>
                                 </a>
                             </div>
@@ -413,30 +413,36 @@
                 </article>
 
             </div>
+            
+            <div class="text-center mt-8 md:hidden">
+                <a href="https://github.com/thrinathpolanki" target="_blank" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+                    View More on GitHub <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Achievements & Certifications -->
-    <section id="achievements" class="py-24 px-6">
+    <section id="achievements" class="py-16 md:py-24 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-10 text-center" data-aos="fade-up">Certifications & Achievements</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center" data-aos="fade-up">Certifications & Achievements</h2>
             
             <!-- Certifications Subsection -->
             <div class="mb-12">
-                <h3 class="text-xl font-bold mb-6 text-emerald-400 border-l-4 border-emerald-500 pl-3 flex items-center gap-2">
+                <h3 class="text-lg md:text-xl font-bold mb-6 text-emerald-400 border-l-4 border-emerald-500 pl-3 flex items-center gap-2">
                     <i class="ph ph-certificate"></i> Certifications
                 </h3>
                 <div class="space-y-4">
                     <!-- Certificate Item 1 -->
-                    <a href="https://www.udemy.com/certificate/UC-06813019-d0f0-42ac-8c5e-7f39e875985c/" target="_blank" class="block p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left">
+                    <a href="https://www.udemy.com/certificate/UC-06813019-d0f0-42ac-8c5e-7f39e875985c/" target="_blank" class="block p-4 md:p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-4">
-                                <div class="h-10 w-10 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center">
+                                <div class="h-10 w-10 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
                                     <i class="ph ph-certificate text-xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors">100 Days of Code: Complete Python Pro</h4>
-                                    <p class="text-sm text-slate-400">Udemy</p>
+                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors text-sm md:text-base">100 Days of Code: Complete Python Pro</h4>
+                                    <p class="text-xs md:text-sm text-slate-400">Udemy</p>
                                 </div>
                             </div>
                             <i class="ph ph-arrow-square-out text-slate-500 group-hover:text-emerald-400"></i>
@@ -444,15 +450,15 @@
                     </a>
 
                     <!-- Certificate Item 2 -->
-                    <a href="https://badges.plus.columbia.edu/442acd70-d201-431a-bad9-7f0bf1aff95d" target="_blank" class="block p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left" data-aos-delay="50">
+                    <a href="https://badges.plus.columbia.edu/442acd70-d201-431a-bad9-7f0bf1aff95d" target="_blank" class="block p-4 md:p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left" data-aos-delay="50">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-4">
-                                <div class="h-10 w-10 bg-blue-500/10 text-blue-500 rounded-full flex items-center justify-center">
+                                <div class="h-10 w-10 bg-blue-500/10 text-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
                                     <i class="ph ph-robot text-xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors">Prompt Engineering & Programming with OPENAI</h4>
-                                    <p class="text-sm text-slate-400">Columbia+</p>
+                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors text-sm md:text-base">Prompt Engineering & Programming with OPENAI</h4>
+                                    <p class="text-xs md:text-sm text-slate-400">Columbia+</p>
                                 </div>
                             </div>
                             <i class="ph ph-arrow-square-out text-slate-500 group-hover:text-emerald-400"></i>
@@ -460,15 +466,15 @@
                     </a>
 
                     <!-- Certificate Item 3 -->
-                    <a href="https://www.coursera.org/account/accomplishments/records/F3U3D8XOLP75" target="_blank" class="block p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left" data-aos-delay="100">
+                    <a href="https://www.coursera.org/account/accomplishments/records/F3U3D8XOLP75" target="_blank" class="block p-4 md:p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left" data-aos-delay="100">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-4">
-                                <div class="h-10 w-10 bg-indigo-500/10 text-indigo-500 rounded-full flex items-center justify-center">
+                                <div class="h-10 w-10 bg-indigo-500/10 text-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
                                     <i class="ph ph-code-block text-xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors">Foundations of Coding Full-Stack</h4>
-                                    <p class="text-sm text-slate-400">Coursera</p>
+                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors text-sm md:text-base">Foundations of Coding Full-Stack</h4>
+                                    <p class="text-xs md:text-sm text-slate-400">Coursera</p>
                                 </div>
                             </div>
                             <i class="ph ph-arrow-square-out text-slate-500 group-hover:text-emerald-400"></i>
@@ -476,15 +482,15 @@
                     </a>
                     
                     <!-- Certificate Item 4 -->
-                     <a href="https://media.geeksforgeeks.org/courses/certificates/5def0d037818c3c76ec52781f5479a84.pdf" target="_blank" class="block p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left" data-aos-delay="150">
+                     <a href="https://media.geeksforgeeks.org/courses/certificates/5def0d037818c3c76ec52781f5479a84.pdf" target="_blank" class="block p-4 md:p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500 hover:translate-x-2 transition-all group" data-aos="fade-left" data-aos-delay="150">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-4">
-                                <div class="h-10 w-10 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center">
+                                <div class="h-10 w-10 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center flex-shrink-0">
                                     <i class="ph ph-database text-xl"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors">SQL Foundation</h4>
-                                    <p class="text-sm text-slate-400">GeeksForGeeks</p>
+                                    <h4 class="font-bold text-slate-200 group-hover:text-emerald-400 transition-colors text-sm md:text-base">SQL Foundation</h4>
+                                    <p class="text-xs md:text-sm text-slate-400">GeeksForGeeks</p>
                                 </div>
                             </div>
                             <i class="ph ph-arrow-square-out text-slate-500 group-hover:text-emerald-400"></i>
@@ -495,20 +501,20 @@
 
             <!-- Achievements Subsection -->
             <div>
-                <h3 class="text-xl font-bold mb-6 text-yellow-400 border-l-4 border-yellow-500 pl-3 flex items-center gap-2">
+                <h3 class="text-lg md:text-xl font-bold mb-6 text-yellow-400 border-l-4 border-yellow-500 pl-3 flex items-center gap-2">
                     <i class="ph ph-trophy"></i> Achievements
                 </h3>
                 
                 <!-- Achievement 1 -->
-                <div onclick="openPdfModal('https://drive.google.com/file/d/1X9jl_JbRcs-pK06HsbTS5N40pVek94bN/preview', 'Google for Startups Certificate')" class="block p-6 bg-slate-800/80 rounded-xl border border-dashed border-slate-600 hover:border-yellow-500/50 hover:bg-slate-800 transition-all cursor-pointer group" data-aos="fade-up">
+                <div onclick="openPdfModal('https://drive.google.com/file/d/1X9jl_JbRcs-pK06HsbTS5N40pVek94bN/preview', 'Google for Startups Certificate')" class="block p-4 md:p-6 bg-slate-800/80 rounded-xl border border-dashed border-slate-600 hover:border-yellow-500/50 hover:bg-slate-800 transition-all cursor-pointer group" data-aos="fade-up">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-4">
                             <div class="h-12 w-12 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center shrink-0">
                                 <i class="ph ph-google-logo text-2xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-100 text-lg group-hover:text-yellow-400 transition-colors">Google for Startups</h4>
-                                <p class="text-sm text-slate-400">Certified in Startup School: Prompt to Prototype</p>
+                                <h4 class="font-bold text-slate-100 text-base md:text-lg group-hover:text-yellow-400 transition-colors">Google for Startups</h4>
+                                <p class="text-xs md:text-sm text-slate-400">Certified in Startup School: Prompt to Prototype</p>
                             </div>
                         </div>
                         <i class="ph ph-eye text-slate-500 group-hover:text-yellow-400"></i>
@@ -520,50 +526,50 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 bg-slate-850/50">
+    <section id="contact" class="py-16 md:py-24 px-6 bg-slate-850/50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-6">Let's Create Something Amazing</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Let's Create Something Amazing</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
                     Whether you have a question, a project idea, or just want to discuss the latest in AI, I'm just a message away.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
                 <!-- Contact Info (Left Side) -->
-                <div class="space-y-6">
-                    <a href="mailto:polankithrinath@gmail.com" class="flex items-center gap-6 p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500/50 transition-all group">
-                        <div class="h-14 w-14 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all">
-                            <i class="ph ph-envelope text-3xl"></i>
+                <div class="space-y-6 order-2 md:order-1">
+                    <a href="mailto:polankithrinath@gmail.com" class="flex items-center gap-6 p-4 md:p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500/50 transition-all group">
+                        <div class="h-12 w-12 md:h-14 md:w-14 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all flex-shrink-0">
+                            <i class="ph ph-envelope text-2xl md:text-3xl"></i>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-lg text-slate-100">Email Me</h3>
-                            <p class="text-slate-400">polankithrinath@gmail.com</p>
+                        <div class="overflow-hidden">
+                            <h3 class="font-bold text-base md:text-lg text-slate-100">Email Me</h3>
+                            <p class="text-slate-400 text-sm truncate">polankithrinath@gmail.com</p>
                         </div>
                     </a>
 
-                    <a href="https://linkedin.com/in/thrinathpolanki" target="_blank" class="flex items-center gap-6 p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-all group">
-                        <div class="h-14 w-14 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                            <i class="ph ph-linkedin-logo text-3xl"></i>
+                    <a href="https://linkedin.com/in/thrinathpolanki" target="_blank" class="flex items-center gap-6 p-4 md:p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-all group">
+                        <div class="h-12 w-12 md:h-14 md:w-14 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all flex-shrink-0">
+                            <i class="ph ph-linkedin-logo text-2xl md:text-3xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-lg text-slate-100">LinkedIn</h3>
-                            <p class="text-slate-400">Connect Professionally</p>
+                            <h3 class="font-bold text-base md:text-lg text-slate-100">LinkedIn</h3>
+                            <p class="text-slate-400 text-sm">Connect Professionally</p>
                         </div>
                     </a>
 
                     <!-- Resume Download Action -->
-                    <div class="p-6 bg-slate-800 rounded-xl border border-slate-700">
-                        <h3 class="font-bold text-lg text-slate-100 mb-4">View my Resume</h3>
+                    <div class="p-4 md:p-6 bg-slate-800 rounded-xl border border-slate-700">
+                        <h3 class="font-bold text-base md:text-lg text-slate-100 mb-4">View my Resume</h3>
                          <!-- UPDATED BUTTON: Opens Modal instead of download -->
-                         <button onclick="openPdfModal('https://drive.google.com/file/d/1puRPpOkHY3r2coMhiiweiHP3vxZEppCu/preview', 'My Resume')" class="w-full inline-flex justify-center items-center gap-2 px-8 py-3 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-white transition-all">
+                         <button onclick="openPdfModal('https://drive.google.com/file/d/1puRPpOkHY3r2coMhiiweiHP3vxZEppCu/preview', 'My Resume')" class="w-full inline-flex justify-center items-center gap-2 px-8 py-3 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-white transition-all text-sm md:text-base">
                             <i class="ph ph-eye"></i> View Resume
                         </button>
                     </div>
                 </div>
 
                 <!-- Contact Form (Right Side) -->
-                <form id="telegramForm" class="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl">
+                <form id="telegramForm" class="bg-slate-800 p-6 md:p-8 rounded-2xl border border-slate-700 shadow-xl order-1 md:order-2">
                     <div class="mb-6">
                         <label for="name" class="block text-sm font-medium text-slate-400 mb-2">Name</label>
                         <input type="text" id="name" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none text-slate-100 placeholder-slate-500 transition-all" placeholder="John Doe" required>
@@ -588,25 +594,25 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+    <footer class="py-8 border-t border-slate-800 text-center text-slate-500 text-xs md:text-sm">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© 2026 Polanki Thrinath. All rights reserved.</p>
             <div class="flex gap-6">
-                <a href="https://github.com/thrinathpolanki" class="hover:text-emerald-400 transition-colors"><i class="ph ph-github-logo text-xl"></i></a>
-                <a href="https://linkedin.com/in/thrinathpolanki" class="hover:text-emerald-400 transition-colors"><i class="ph ph-linkedin-logo text-xl"></i></a>
-                <a href="mailto:polankithrinath@gmail.com" class="hover:text-emerald-400 transition-colors"><i class="ph ph-envelope text-xl"></i></a>
+                <a href="https://github.com/thrinathpolanki" class="hover:text-emerald-400 transition-colors"><i class="ph ph-github-logo text-lg md:text-xl"></i></a>
+                <a href="https://linkedin.com/in/thrinathpolanki" class="hover:text-emerald-400 transition-colors"><i class="ph ph-linkedin-logo text-lg md:text-xl"></i></a>
+                <a href="mailto:polankithrinath@gmail.com" class="hover:text-emerald-400 transition-colors"><i class="ph ph-envelope text-lg md:text-xl"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- PDF Modal -->
     <div id="pdf-modal" class="fixed inset-0 z-[60] hidden bg-slate-900/80 backdrop-blur-sm items-center justify-center p-4">
-        <div class="bg-slate-800 w-full max-w-4xl h-[80vh] rounded-2xl border border-slate-700 shadow-2xl flex flex-col overflow-hidden relative">
-            <div class="p-4 border-b border-slate-700 flex justify-between items-center bg-slate-900/50">
+        <div class="bg-slate-800 w-[95%] max-w-4xl h-[80vh] md:h-[85vh] rounded-2xl border border-slate-700 shadow-2xl flex flex-col overflow-hidden relative">
+            <div class="p-3 md:p-4 border-b border-slate-700 flex justify-between items-center bg-slate-900/50">
                 <!-- Title is now dynamic -->
-                <h3 id="modal-title" class="font-bold text-slate-100 flex items-center gap-2"><i class="ph ph-file-pdf text-emerald-400"></i> Document Preview</h3>
-                <button onclick="closePdfModal()" class="text-slate-400 hover:text-white transition-colors">
-                    <i class="ph ph-x text-2xl"></i>
+                <h3 id="modal-title" class="font-bold text-slate-100 flex items-center gap-2 text-sm md:text-lg"><i class="ph ph-file-pdf text-emerald-400"></i> Document Preview</h3>
+                <button onclick="closePdfModal()" class="text-slate-400 hover:text-white transition-colors p-2">
+                    <i class="ph ph-x text-xl md:text-2xl"></i>
                 </button>
             </div>
             <!-- Src is now dynamic -->
@@ -616,12 +622,12 @@
 
     <!-- Success Modal -->
     <div id="success-modal" class="fixed inset-0 z-[70] hidden bg-slate-900/80 backdrop-blur-sm items-center justify-center p-4">
-        <div class="bg-slate-800 p-8 rounded-2xl border border-emerald-500/50 shadow-2xl flex flex-col items-center max-w-sm w-full text-center transform scale-100 transition-all">
-            <div class="h-16 w-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6 text-emerald-400">
-                <i class="ph ph-check-circle text-4xl"></i>
+        <div class="bg-slate-800 p-6 md:p-8 rounded-2xl border border-emerald-500/50 shadow-2xl flex flex-col items-center max-w-sm w-full text-center transform scale-100 transition-all mx-4">
+            <div class="h-14 w-14 md:h-16 md:w-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6 text-emerald-400">
+                <i class="ph ph-check-circle text-3xl md:text-4xl"></i>
             </div>
-            <h3 class="text-2xl font-bold text-slate-100 mb-2">Message Sent!</h3>
-            <p class="text-slate-400 mb-8">Thanks for reaching out. I'll get back to you as soon as possible.</p>
+            <h3 class="text-xl md:text-2xl font-bold text-slate-100 mb-2">Message Sent!</h3>
+            <p class="text-slate-400 mb-8 text-sm md:text-base">Thanks for reaching out. I'll get back to you as soon as possible.</p>
             <button onclick="closeSuccessModal()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold rounded-lg transition-colors shadow-lg shadow-emerald-500/20">
                 Done
             </button>
@@ -673,17 +679,25 @@
 
         // Mobile Menu Logic
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = document.getElementById('menu-icon');
 
         function toggleMenu() {
-            mobileMenu.classList.toggle('translate-x-full');
-            document.body.classList.toggle('overflow-hidden');
+            const isClosed = mobileMenu.classList.contains('translate-x-full');
+            
+            if (isClosed) {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.classList.add('overflow-hidden');
+                menuIcon.classList.replace('ph-list', 'ph-x');
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+                menuIcon.classList.replace('ph-x', 'ph-list');
+            }
         }
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', toggleMenu);
         
         mobileLinks.forEach(link => {
             link.addEventListener('click', toggleMenu);
